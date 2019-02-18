@@ -55,9 +55,12 @@ namespace ConsoleApp1
             Object obj = Console.ReadLine();
             Console.WriteLine(" obj - " + obj);
 
-            int i = Convert.ToInt32(obj);
-            i += 1;
-            Console.WriteLine(" obj-> int - " + i );
+            //int i = Convert.ToInt32(obj);
+            //i += 1;
+            //.WriteLine(" obj-> int - " + i );
+            string i = (string)obj;
+            Console.WriteLine(" obj-> string - " + i );
+
 
 
         }
