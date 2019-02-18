@@ -13,8 +13,8 @@ namespace ConsoleApp1
             DateType tt = new DateType();
             tt.SumTwoInt();
             tt.DifferenceBetweenFloatDoubleDecimal();
-            tt.BoxingUnboxing(123);
-            tt.BoxingUnboxing("123");
+            tt.BoxingUnboxing();
+            
             tt.GetInfoAboutString();
 
         }
@@ -49,13 +49,16 @@ namespace ConsoleApp1
 
         }
 
-        public void BoxingUnboxing(int i)
-        {            
-            Console.WriteLine(" i - " + i);
-            object o = i;
-            Console.WriteLine(" o - " + o);
-            i = (int)o;
-            Console.WriteLine(" i - " + i);          
+        public void BoxingUnboxing()
+        {
+            Console.WriteLine("enter string for BoxingUnboxing ");
+            Object obj = Console.ReadLine();
+            Console.WriteLine(" obj - " + obj);
+
+            int i = Convert.ToInt32(obj);
+            i += 1;
+            Console.WriteLine(" obj-> int - " + i );
+
 
         }
 
