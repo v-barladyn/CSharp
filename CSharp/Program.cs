@@ -10,71 +10,65 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-
-            Person Boy = new Person("Tom", "Male", 1998);
-            Person Girl = new Person("Mary", "Female", 1998);
-            Person Jim = new Person();
-
-
+            DateType tt = new DateType();
+            tt.SumTwoInt();
+            tt.DifferenceBetweenFloatDoubleDecimal();
+            tt.BoxingUnboxing(123);
+            tt.BoxingUnboxing("123");
+            tt.GetInfoAboutString();
 
         }
     }
 
-    class Person
+    class DateType
     {
-        public string YearOfBirth { get; set; }
-        public int YearOfBirthInt { get; set; }
-        public string Name { get; set; }
-
-        public int Height { get; set; }
-        public int Age { get; set; }
-        public string Sex { get; set; }
-
-        public Person()
+        public int ConvertToInt(string str)
         {
-
-            Console.Write("Enter name: ");
-            Name = Console.ReadLine();
-            Console.Write("Entered name: " + Name);
-
-            Console.Write("Enter Sex: ");
-            Sex = Console.ReadLine();
-            Console.Write("Entered Sex: " + Sex);
-
-            Console.Write("Enter YearOfBirth: ");
-            YearOfBirth = Console.ReadLine();
-            YearOfBirthInt = Convert.ToInt32(YearOfBirth);
-            Console.WriteLine("Entered YearOfBirth: " + YearOfBirthInt);
-
-            ShowInfo();
-
+            return Convert.ToInt32(str);
         }
-        public Person(string name, string sex, int yearOfBirthInt)
+
+        public void DifferenceBetweenFloatDoubleDecimal()
         {
+            float flt = 1F / 3;
+            double dbl = 1D / 3;
+            decimal dcm = 1M / 3;
+            Console.WriteLine("float: {0} double: {1} decimal: {2}", flt, dbl, dcm);
+            
+        }
 
-            Name = name;
-            Sex = sex;
-            YearOfBirthInt = yearOfBirthInt;
+        public void SumTwoInt()
+        {
+            Console.WriteLine("enter int1");
+            int int1 = ConvertToInt(Console.ReadLine());
+            Console.WriteLine("enter int2");
+            int int2 = int.Parse(Console.ReadLine());
+            int sumInt = int1 + int2;
 
-            ShowInfo();
+            Console.WriteLine("int1 {0} + int2 {1} = {2}", int1, int2, sumInt);
+            
 
         }
 
+        public void BoxingUnboxing(int i)
+        {            
+            Console.WriteLine(" i - " + i);
+            object o = i;
+            Console.WriteLine(" o - " + o);
+            i = (int)o;
+            Console.WriteLine(" i - " + i);          
 
-        public int GetAge()
-        {
-            Age = Convert.ToInt32(DateTime.Now.Year.ToString()) - YearOfBirthInt;
-
-            return Age;
         }
 
-        public void ShowInfo()
+        public void GetInfoAboutString()
         {
-            Console.WriteLine("New person mane - " + Name);
-            Console.WriteLine("Year of birth - " + YearOfBirth);
-            Console.WriteLine("Age - " + GetAge());
-            Console.WriteLine("Sex - " + Sex);
-
+            Console.WriteLine("enter string");
+            string str = Console.ReadLine();
+            int i = str.Length;
+            var input = str.ToCharArray();
+            char last = input[str.Length - 1];
+            Console.WriteLine("Secound Char is   {0} ", input[1]);
+            Console.WriteLine("Last value  {0} ", last);
+            Console.WriteLine("Length of entered string is  {0} ", i);
             Console.ReadKey();
 
         }
