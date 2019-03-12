@@ -22,15 +22,15 @@ namespace ConsoleApp1
     }
 
     abstract class Item
-    {       
+    {
+        protected string name { get; set; }
+        protected int price { get; set; }
 
         public abstract void Info(); 
     }
 
-    class Book : Item
-    {
-        protected string name { get; set;}
-        protected int price { get; set; }
+    class Book : Item    {
+        
 
         public Book(string name, int price)
         {
