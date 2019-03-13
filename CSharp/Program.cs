@@ -17,6 +17,9 @@ namespace ConsoleApp1
             MyBook jj = new MyBook("Some book", 23, "John");
             jj.Info();
 
+            Console.WriteLine();
+            Console.WriteLine("Amount of created objects - " + Book.count);
+
             Console.ReadKey();
         }
     }
@@ -30,17 +33,21 @@ namespace ConsoleApp1
     }
 
     class Book : Item    {
+
+        public static int count;
         
 
         public Book(string name, int price)
         {
             this.name = name;
             this.price = price;
+
+            count++;
         }
 
         override public void Info()
         {
-            Console.WriteLine("Book name - {0}, Price - {1}", name, price);
+            Console.Write("Book name - {0}, Price - {1}", name, price);
         }
     }
     class MyBook : Book
@@ -55,7 +62,9 @@ namespace ConsoleApp1
 
         override public void Info()
         {
-            Console.WriteLine("Book name - {0}, Price - {1}, Owner - {2}", name, price,owner);
+            Console.WriteLine();
+            base.Info();
+            Console.Write(", Owner - {0}",owner);
         }
     }
 }
