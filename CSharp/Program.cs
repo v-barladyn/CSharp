@@ -6,7 +6,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Web.UI;
 using System.Web.Script.Serialization;
-using System.Web.Script.Serialization.JavaScriptSerializer;
 
 namespace ConsoleApp1
 {
@@ -18,75 +17,24 @@ namespace ConsoleApp1
             OperationWithFilesTxt gg = new OperationWithFilesTxt();
             //gg.ReadFile("C:\\CSharp\\New.txt");
             //gg.AddTextToFile("C:\\CSharp\\New.txt", "Add some text");
-            //gg.FindLines("text", "C:\\CSharp\\New.txt");
-
-
-            OperationsWithXML rr = new OperationsWithXML();
-            //rr.ReadXml("C:\\books.xml");
-            rr.AddNode();
-            //rr.RemoveNode("Pro1");
-
-            var obj = new Lad
-            {
-                firstName = "Markoff",
-                lastName = "Chaney",
-                dateOfBirth = new MyDate
-                {
-                    year = 1901,
-                    month = 4,
-                    day = 30
-                }
-            };
-            var json = new JavaScriptSerializer().Serialize(obj);
-            Console.WriteLine(json);
+            gg.FindLines("text", "C:\\CSharp\\New.txt");
             Console.ReadKey();
 
+
+            //OperationsWithXML rr = new OperationsWithXML();
+            //rr.ReadXml("C:\\books.xml");
+            //rr.AddNode();
+            //rr.RemoveNode("Pro1");
+
+            //OperationWithJSon ff = new OperationWithJSon();
+
+            //ff.objectToJson();
+            //ff.JsonToObject(ff.objectToJson());
+
         }
     }
 
-    abstract class Item
-    {
-        protected string name { get; set; }
-        protected int price { get; set; }
 
-        public abstract void Info();
-    }
-
-    class Book : Item {
-
-        public static int count;
-
-
-        public Book(string name, int price)
-        {
-            this.name = name;
-            this.price = price;
-
-            count++;
-        }
-
-        override public void Info()
-        {
-            Console.Write("Book name - {0}, Price - {1}", name, price);
-        }
-    }
-    class MyBook : Book
-    {
-        protected string owner { get; set; }
-        public MyBook(string name, int price, string owner) : base(name, price)
-        {
-            this.name = name;
-            this.price = price;
-            this.owner = owner;
-        }
-
-        override public void Info()
-        {
-            Console.WriteLine();
-            base.Info();
-            Console.Write(", Owner - {0}", owner);
-        }
-    }
 
     class OperationWithFilesTxt
     {
@@ -119,7 +67,7 @@ namespace ConsoleApp1
         {
             try
             {
-                StreamWriter sw = new StreamWriter(fileNmae);
+                StreamWriter sw = new StreamWriter(fileNmae, true);
                 sw.WriteLine(testToAdd);
                 sw.Close();
                 Console.WriteLine("next text was added to file " + testToAdd);
@@ -252,6 +200,37 @@ namespace ConsoleApp1
 
 
 
+    }
+
+    class OperationWithJSon
+    {
+        public string objectToJson()
+        {
+            var obj = new Lad
+            {
+                firstName = "Markoff",
+                lastName = "Chaney",
+                dateOfBirth = new MyDate
+                {
+                    year = 1901,
+                    month = 4,
+                    day = 30
+                }
+            };
+            var json = new JavaScriptSerializer().Serialize(obj);
+
+            Console.WriteLine(json);
+      
+
+            return json;
+        }
+
+        public void JsonToObject(string json)
+        {
+            var obj = new JavaScriptSerializer().Deserialize<Lad>(json);
+            Console.WriteLine(obj);
+            Console.ReadKey();
+        }
     }
 
 
