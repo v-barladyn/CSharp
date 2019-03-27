@@ -15,21 +15,21 @@ namespace ConsoleApp1
         {
 
             OperationWithFilesTxt gg = new OperationWithFilesTxt();
-            //gg.ReadFile("C:\\CSharp\\New.txt");
-            //gg.AddTextToFile("C:\\CSharp\\New.txt", "Add some text");
-            gg.FindLines("text", "C:\\CSharp\\New.txt");
+            gg.ReadFile("C:\\CSharp\\New.txt");
+            gg.AddTextToFile("C:\\CSharp\\New.txt", "Add some text");
+            gg.FindLines("text", "C:\\CSharp\\New.txt");           
+
+
+            OperationsWithXML rr = new OperationsWithXML();
+            rr.ReadXml("C:\\books.xml");
+            rr.AddNode();
+            rr.RemoveNode("Pro1");
+
+            OperationWithJSon ff = new OperationWithJSon();
+
+            ff.objectToJson();
+            ff.JsonToObject(ff.objectToJson());
             Console.ReadKey();
-
-
-            //OperationsWithXML rr = new OperationsWithXML();
-            //rr.ReadXml("C:\\books.xml");
-            //rr.AddNode();
-            //rr.RemoveNode("Pro1");
-
-            //OperationWithJSon ff = new OperationWithJSon();
-
-            //ff.objectToJson();
-            //ff.JsonToObject(ff.objectToJson());
 
         }
     }
